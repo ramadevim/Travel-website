@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Register</title>
+</head>
+<body>
+   
+    <div class='text-center'>
+            <h1>{{title}}</h1>
+    
+    </div >
+    
+      <div class="container">
+        <div class="jumbotron">
+          {% if registered %}
+            <h1>Thank you for registering!</h1>
+          {% else %}
+            <h1>Register Here</h1>
+            <h3>Just fill out the form.</h3>
+            <form enctype="multipart/form-data" method="POST"   >
+              {% csrf_token %}
+              {{form.as_p}}
+                <button type="submit" class="btn btn-success">Register</button>
+            </form>
+            {% endif %}
+            <div class="border-top pt-3">
+                <small class="text-muted">
+                   Already Have an account <a class="ml-2" href="{% url 'accounts:login' %}">Sign In</a>
+                </small>
+          </div>
+        </div>
+      </div>
+    
+    
+    
+</body>
+</html>
